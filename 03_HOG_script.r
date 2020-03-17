@@ -1,0 +1,27 @@
+rm(list=ls())
+getwd()
+setwd("/home/martin-r")
+#-------------------------------------------
+library(raster)
+library(rgdal)
+library(wvtool)
+library(OpenImageR)
+#-------------------------------------------
+ras=brick(file.choose())
+ras_R_band=raster(ras,layer=1)
+ras_G_band=raster(ras,layer=2)
+ras_B_band=raster(ras,layer=3)
+#-------------------------------------------
+fun1=function(x,y,z){(0.30*x+0.59*y+0.11*z)}
+ras_gray=overlay(ras_R_band,ras_G_band,ras_B_band,fun=fun1,na.rm=T)
+ras_gray_matrix=raster::as.matrix(ras)
+#-------------------------------------------
+ras_hog= HOG(ras_gray_matrix,cells=2,orientations=6)
+ras_hog=raster::as.matrix(ras_hog,byrow=T)
+#-------------------------------------------
+ras_hog=raster(ras_hog)
+#------------------------------------------
+plot(ras_hog)
+#-------------------------------------------
+writeRaster(raster_edge,format='GTiff',filename="raster_edge.tif",overwrite=T)
+#-------------------------------------------
