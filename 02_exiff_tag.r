@@ -10,7 +10,7 @@ setwd("C:/Users/mm/Documents/005_EXIFF_tools/001_TEST_DATA")
 #exiftool_cmd <- paste("exiftool -GPSLongitudeRef=W -GPSLongitude=",lon_exif," -GPSLatitudeRef=S -GPSLatitude=",lat_exif," ",filename_exif,sep='')
 #system(exiftool_cmd)
 #----------------leo para ver si se modificaron las coordenadas
-#----
+#---
 extract_exif=function(image_filename){
   #-------------------------------------------
   library(raster)
