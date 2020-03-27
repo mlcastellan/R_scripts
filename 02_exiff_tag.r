@@ -1,7 +1,7 @@
 rm(list=ls())
 getwd()
 setwd("C:/Users/mm/Documents/005_EXIFF_tools/001_TEST_DATA")
-#-------------------------------------------
+#------------------------------------------
 ##filename_exif=file.choose()
 ##ras=brick(filename_exif)
 ##lat_exif=41.40338
